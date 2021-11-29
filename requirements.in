@@ -1,0 +1,7 @@
+# fmt
+isort
+black
+
+# generate
+mimesis
+tqdm
