@@ -5,3 +5,11 @@ black
 # generate
 mimesis
 tqdm
+
+# compare
+psutil
+
+# python impl
+numpy
+pandas
+petl
