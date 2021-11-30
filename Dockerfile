@@ -17,6 +17,8 @@ RUN python3 -m venv /home/user/env_python-ext_3.9.9
 ENV PATH=/home/user/env_python-ext_3.9.9/bin:$PATH
 RUN pip install -U pip wheel
 
+RUN mkdir -p /tmp/data/
+
 ENV NLS_LANG=.AL32UTF8
 
 ENV PYTHONUNBUFFERED 1
