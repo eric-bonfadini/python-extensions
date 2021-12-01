@@ -20,6 +20,7 @@ The input CSV is made up of 5 columns: a full name, a birthday, a number of logi
 ## Compare
 
 The script [compare.py](compare.py) allows to generate output files (printing also time/memory taken) and to compare each file to the master output (python standard lib version).
+Each implementation gets 8 params in input (in/out filepath, in/out delimiter, in/out line_terminator, in/out encoding) and returns the number of rows processed.
 
 **Note: this is not a benchmark between all the implementations, but it's just a way to show how to integrate different languages in python using a "real" use case. Each implementation can probably be much more elegant/idiomatic/fast/efficient.**
 
@@ -31,4 +32,9 @@ The script [impl_python.py](impl_python.py) contains implementations in native p
 - python standard lib
 - pandas
 - petl
+
+### Cython
+
+The script [impl_cython.py](impl_cython.py) contains the cython implementation.
+The extension can be built with `make build-cython`.
 

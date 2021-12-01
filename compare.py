@@ -12,6 +12,7 @@ from generate_input_data import (
     DEFAULT_INPUT_FILEPATH,
     DEFAULT_INPUT_LINE_TERMINATOR,
 )
+from impl_cython import cython_python_ext
 from impl_python import etl_pandas, etl_petl, etl_stdlib
 
 DEFAULT_OUTPUT_DELIMITER = "|"
@@ -21,6 +22,7 @@ DEFAULT_OUTPUT_ENCODING = "utf-8"
 FILEPATH_PY3_STDLIB = "/tmp/data/pyt_stdlib.csv"
 FILEPATH_PY3_PANDAS = "/tmp/data/pyt_pandas.csv"
 FILEPATH_PY3_PETL = "/tmp/data/pyt_petl.csv"
+FILEPATH_CYT = "/tmp/data/cyt.csv"
 
 
 @contextmanager
@@ -92,6 +94,20 @@ def compare(
         )
         print(f"{nr_rows} rows processed")
     assert filecmp.cmp(FILEPATH_PY3_STDLIB, FILEPATH_PY3_PETL, shallow=False)
+
+    with perf_logger("CYT"):
+        nr_rows = cython_python_ext.etl(
+            in_filepath,
+            FILEPATH_CYT,
+            in_delimiter=in_delimiter,
+            out_delimiter=out_delimiter,
+            in_line_terminator=in_line_terminator,
+            out_line_terminator=out_line_terminator,
+            in_encoding=in_encoding,
+            out_encoding=out_encoding,
+        )
+        print(f"{nr_rows} rows processed")
+    assert filecmp.cmp(FILEPATH_PY3_STDLIB, FILEPATH_CYT, shallow=False)
 
 
 if __name__ == "__main__":

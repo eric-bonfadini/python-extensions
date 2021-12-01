@@ -9,5 +9,10 @@ fmt-python:
 
 fmt: fmt-python
 
+build-cython:
+	python cython_setup.py build_ext --inplace
 
-all: fmt
+build: build-cython
+
+
+all: fmt build
