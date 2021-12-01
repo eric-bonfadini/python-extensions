@@ -8,6 +8,8 @@ black==21.11b1
     # via -r requirements.in
 click==8.0.3
     # via black
+cython==0.29.24
+    # via -r requirements.in
 isort==5.10.1
     # via -r requirements.in
 mimesis==5.1.0
@@ -40,5 +42,5 @@ tomli==1.2.2
     # via black
 tqdm==4.62.3
     # via -r requirements.in
-typing-extensions==4.0.0
+typing-extensions==4.0.1
     # via black

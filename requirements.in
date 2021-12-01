@@ -13,3 +13,6 @@ psutil
 numpy
 pandas
 petl
+
+# cython impl
+cython
