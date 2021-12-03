@@ -13,7 +13,7 @@ DEFAULT_INPUT_ENCODING = "cp1252"
 
 @click.command()
 @click.option("-f", "--filepath", default=DEFAULT_INPUT_FILEPATH)
-@click.option("-r", "--rows", default=100)
+@click.option("-r", "--rows", default=1000)
 @click.option("-d", "--delimiter", default=DEFAULT_INPUT_DELIMITER)
 @click.option("-lt", "--line-terminator", default=DEFAULT_INPUT_LINE_TERMINATOR)
 @click.option("-e", "--encoding", default=DEFAULT_INPUT_ENCODING)

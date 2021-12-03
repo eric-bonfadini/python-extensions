@@ -1,0 +1,20 @@
+[package]
+name = "rust-python-ext"
+version = "1.0.0"
+edition = "2021"
+
+[lib]
+name = "rust_python_ext"
+crate-type = ["cdylib"]
+
+[dependencies]
+csv = "1.1"
+serde = "1.0"
+serde_derive = "1.0"
+chrono  = "0.4"
+encoding_rs = "0.8"
+encoding_rs_io = "0.1"
+
+[dependencies.pyo3]
+version = "0.15"
+features = ["extension-module"]
