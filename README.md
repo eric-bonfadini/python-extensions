@@ -35,6 +35,17 @@ The script [impl_python.py](impl_python.py) contains implementations in native p
 
 ### Cython
 
-The script [impl_cython.py](impl_cython.py) contains the cython implementation.
-The extension can be built with `make build-cython`.
+The folder impl_cython contains the cython implementation ([cython_python_ext.pyx](impl_cython/cython_python_ext.pyx)).
+Cython is installed as a python lib, defined inside requirements.in/txt
 
+This extension can be built with `make build-cython`. Once built, the impl_cython folder will contain:
+- the .cpp version of the code
+- an .html file with annotations
+- the .so file that will be imported in python
+
+### Rust
+
+Rust (version 1.57.0) is installed in the Dockerfile; the integration with python is possible using the Rust library PyO3.
+The folder impl_rust contains the rust implementation ([lib.rs](impl_rust/src/lib.rs)) and the configuration ([Cargo.toml](impl_rust/Cargo.toml)).
+
+This extension can be built with `make build-rust`. Once built, the extension will be in the target folder (with a symbolic link that will be imported in python)
