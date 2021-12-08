@@ -8,6 +8,9 @@ __pycache__/
 *.cpp
 *.html
 
+# gopy
+out/
+
 # Mac
 .DS_Store
 

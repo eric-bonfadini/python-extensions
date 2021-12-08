@@ -16,3 +16,6 @@ petl
 
 # cython impl
 cython
+
+# go impl
+pybindgen

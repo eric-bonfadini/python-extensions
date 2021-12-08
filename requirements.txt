@@ -4,11 +4,11 @@
 #
 #    pip-compile --no-emit-index-url --no-emit-trusted-host --output-file=requirements.txt requirements.in
 #
-black==21.11b1
+black==21.12b0
     # via -r requirements.in
 click==8.0.3
     # via black
-cython==0.29.24
+cython==0.29.25
     # via -r requirements.in
 isort==5.10.1
     # via -r requirements.in
@@ -30,12 +30,12 @@ platformdirs==2.4.0
     # via black
 psutil==5.8.0
     # via -r requirements.in
+pybindgen==0.22.0
+    # via -r requirements.in
 python-dateutil==2.8.2
     # via pandas
 pytz==2021.3
     # via pandas
-regex==2021.11.10
-    # via black
 six==1.16.0
     # via python-dateutil
 tomli==1.2.2

@@ -1,6 +1,6 @@
 
 reqs:
-	pip install pip-tools
+	pip install -U pip-tools
 	pip-compile -U --no-emit-trusted-host --no-emit-index-url --build-isolation -o requirements.txt requirements.in
 
 
@@ -10,7 +10,10 @@ fmt-python:
 fmt-rust:
 	cd impl_rust && rustfmt **/*.rs
 
-fmt: fmt-python fmt-rust
+fmt-go:
+	gofmt -w impl_go/*.go
+
+fmt: fmt-python fmt-rust fmt-go
 
 
 build-cython:
@@ -19,13 +22,19 @@ build-cython:
 build-rust:
 	cd impl_rust && cargo rustc --release && ln -fs target/release/librust_python_ext.so rust_python_ext.so
 
-build: build-cython build-rust
+build-go:
+	cd impl_go && gopy build -output=out -vm=python3 .
+
+build: build-cython build-rust build-go
 
 
 test-rust:
 	cd impl_rust && cargo test
 
-test: test-rust
+test-go:
+	cd impl_go && go test
+
+test: test-rust test-go
 
 
 all: fmt test build
