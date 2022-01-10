@@ -1,6 +1,6 @@
 FROM python:3.9.9-slim as base_image
 
-RUN apt-get update && apt-get install -y wget xz-utils build-essential debconf locales locales-all git file && apt-get clean
+RUN apt-get update && apt-get install -y curl xz-utils build-essential debconf locales locales-all git file && apt-get clean
 
 ENV LANGUAGE=en_US.UTF-8
 ENV LC_ALL=en_US.UTF-8
@@ -9,10 +9,11 @@ RUN locale-gen en_US.UTF-8
 RUN dpkg-reconfigure locales
 
 # install rust 1.57.0
-RUN wget -P /tmp/ https://static.rust-lang.org/dist/rust-1.57.0-x86_64-unknown-linux-gnu.tar.gz && tar -C /usr/local -xzf /tmp/rust-1.57.0-x86_64-unknown-linux-gnu.tar.gz && /usr/local/rust-1.57.0-x86_64-unknown-linux-gnu//install.sh && rm -f /tmp/rust-1.57.0-x86_64-unknown-linux-gnu.tar.gz && rm -rf /usr/local/rust-1.57.0*
+RUN cd /usr/local && curl -sL https://static.rust-lang.org/dist/rust-1.57.0-x86_64-unknown-linux-gnu.tar.gz | tar xfz -
+RUN /usr/local/rust-1.57.0-x86_64-unknown-linux-gnu//install.sh
 
-# install go 1.17.4
-RUN wget -P /tmp/ https://go.dev/dl/go1.17.4.linux-amd64.tar.gz && tar -C /usr/local -xzf /tmp/go1.17.4.linux-amd64.tar.gz && rm -f /tmp/go1.17.4.linux-amd64.tar.gz
+# install go 1.17.6
+RUN cd /usr/local && curl -sL https://go.dev/dl/go1.17.6.linux-amd64.tar.gz | tar xfz -
 ENV PATH=$PATH:/usr/local/go/bin
 
 

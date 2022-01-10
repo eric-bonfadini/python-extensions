@@ -53,8 +53,8 @@ This extension can be built with `make build-rust`. Once built, the extension wi
 
 ### Go
 
-Go (version 1.17.4) is installed in the Dockerfile; the integration with python is possible using the go library gopy + the python library pybindgen.
+Go (version 1.17.6) is installed in the Dockerfile; the integration with python is possible using the go library gopy + the python library pybindgen.
 The folder impl_go contains the go implementation ([go_python_ext.go](impl_go/go_python_ext.go)) and the configuration ([go.mod](impl_go/go.mod)).
-Tests are in ([go_python_ext_test.go](impl_go/go_python_ext_tets.go))  and can be run with `make test-go`.
+Tests are in ([go_python_ext_test.go](impl_go/go_python_ext_test.go))  and can be run with `make test-go`.
 
 This extension can be built with `make build-go`. Once built, the extension will be in the out folder.
