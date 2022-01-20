@@ -14,6 +14,7 @@ from generate_input_data import (
 )
 from impl_cython import cython_python_ext
 from impl_go.out import impl_go
+from impl_nim import nim_python_ext
 from impl_python import etl_pandas, etl_petl, etl_stdlib
 from impl_rust import rust_python_ext
 
@@ -27,6 +28,7 @@ FILEPATH_PY3_PETL = "/tmp/data/pyt_petl.csv"
 FILEPATH_CYT = "/tmp/data/cyt.csv"
 FILEPATH_RUS = "/tmp/data/rus.csv"
 FILEPATH_GO = "/tmp/data/go.csv"
+FILEPATH_NIM = "/tmp/data/nim.csv"
 
 
 @contextmanager
@@ -140,6 +142,20 @@ def compare(
         )
         print(f"{nr_rows} rows processed")
     assert filecmp.cmp(FILEPATH_PY3_STDLIB, FILEPATH_GO, shallow=False)
+
+    with perf_logger("NIM"):
+        nr_rows = nim_python_ext.etl(
+            in_filepath,
+            FILEPATH_NIM,
+            in_delimiter=in_delimiter,
+            out_delimiter=out_delimiter,
+            in_line_terminator=in_line_terminator,
+            out_line_terminator=out_line_terminator,
+            in_encoding=in_encoding,
+            out_encoding=out_encoding,
+        )
+        print(f"{nr_rows} rows processed")
+    assert filecmp.cmp(FILEPATH_PY3_STDLIB, FILEPATH_NIM, shallow=False)
 
 
 if __name__ == "__main__":

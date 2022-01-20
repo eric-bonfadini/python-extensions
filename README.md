@@ -45,7 +45,7 @@ This extension can be built with `make build-cython`. Once built, the impl_cytho
 
 ### Rust
 
-Rust (version 1.57.0) is installed in the Dockerfile; the integration with python is possible using the Rust library PyO3.
+Rust (version 1.58.0) is installed in the Dockerfile; the integration with python is possible using the Rust library PyO3.
 The folder impl_rust contains the rust implementation ([lib.rs](impl_rust/src/lib.rs)) and the configuration ([Cargo.toml](impl_rust/Cargo.toml)).
 Tests are inside the same file and can be run with `make test-rust`.
 
@@ -58,3 +58,11 @@ The folder impl_go contains the go implementation ([go_python_ext.go](impl_go/go
 Tests are in ([go_python_ext_test.go](impl_go/go_python_ext_test.go))  and can be run with `make test-go`.
 
 This extension can be built with `make build-go`. Once built, the extension will be in the out folder.
+
+### Nim
+
+Nim (version 1.6.2) is installed in the Dockerfile; the integration with python is possible using the nim library nimpy.
+The folder impl_nim contains the go implementation ([nim_python_ext.nim](impl_nim/nim_python_ext.nim)).
+Tests are in ([test0.nim](impl_nim/tests/test0.nim))  and can be run with `make test-nim`.
+
+This extension can be built with `make build-nim`. Once built, the extension will be in the impl_nim folder.

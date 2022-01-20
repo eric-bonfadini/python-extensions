@@ -13,7 +13,10 @@ fmt-rust:
 fmt-go:
 	gofmt -w impl_go/*.go
 
-fmt: fmt-python fmt-rust fmt-go
+fmt-nim:
+	cd impl_nim && nimpretty **/*.nim
+
+fmt: fmt-python fmt-rust fmt-go fmt-nim
 
 
 build-cython:
@@ -25,7 +28,10 @@ build-rust:
 build-go:
 	cd impl_go && gopy build -output=out -vm=python3 .
 
-build: build-cython build-rust build-go
+build-nim:
+	cd impl_nim && nim c -d:release --threads:on --app:lib --out:nim_python_ext.so src/nim_python_ext.nim
+
+build: build-cython build-rust build-go build-nim
 
 
 test-rust:
@@ -34,7 +40,11 @@ test-rust:
 test-go:
 	cd impl_go && go test
 
-test: test-rust test-go
+test-nim:
+    # not working because of https://github.com/nim-lang/Nim/pull/19018
+	cd impl_nim && testament p tests/*.nim
+
+test: test-rust test-go # test-nim
 
 
 all: fmt test build
