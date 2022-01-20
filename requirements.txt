@@ -16,7 +16,7 @@ mimesis==5.2.1
     # via -r requirements.in
 mypy-extensions==0.4.3
     # via black
-numpy==1.22.0
+numpy==1.22.1
     # via
     #   -r requirements.in
     #   pandas
